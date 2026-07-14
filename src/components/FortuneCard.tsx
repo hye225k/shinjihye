@@ -47,18 +47,33 @@ export default function FortuneCard() {
           </div>
 
           {/* Back face */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-100 to-indigo-200 p-6 text-center shadow-xl [backface-visibility:hidden] [transform:rotateY(180deg)] dark:border-violet-900 dark:from-violet-950 dark:to-indigo-950">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-100 to-indigo-200 p-6 text-center shadow-xl [backface-visibility:hidden] [transform:rotateY(180deg)] dark:border-violet-900 dark:from-violet-950 dark:to-indigo-950">
             <span className="text-4xl">✨</span>
             <p className="text-base font-medium leading-relaxed text-violet-950 dark:text-violet-100">
               {result?.fortune}
             </p>
-            <div className="mt-2 flex flex-col gap-1 text-sm text-violet-800 dark:text-violet-300">
+            <div className="mt-1 flex flex-col gap-1 text-sm text-violet-800 dark:text-violet-300">
               <p>
                 🍀 행운의 아이템 <span className="font-semibold">{result?.item}</span>
               </p>
               <p>
                 🎨 행운의 색 <span className="font-semibold">{result?.color}</span>
               </p>
+            </div>
+            <div className="mt-1 flex flex-col items-center gap-2">
+              <p className="text-sm text-violet-800 dark:text-violet-300">
+                🎱 행운의 로또 번호
+              </p>
+              <div className="flex flex-wrap justify-center gap-1.5">
+                {result?.lotto.map((n) => (
+                  <span
+                    key={n}
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-violet-600 text-sm font-bold text-white shadow dark:bg-violet-500"
+                  >
+                    {n}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>

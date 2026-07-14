@@ -59,10 +59,19 @@ export type FortuneResult = {
   fortune: string;
   item: string;
   color: string;
+  lotto: number[];
 };
 
 function pickRandom<T>(list: T[]): T {
   return list[Math.floor(Math.random() * list.length)];
+}
+
+function drawLotto(): number[] {
+  const numbers = new Set<number>();
+  while (numbers.size < 6) {
+    numbers.add(Math.floor(Math.random() * 45) + 1);
+  }
+  return Array.from(numbers).sort((a, b) => a - b);
 }
 
 export function drawFortune(): FortuneResult {
@@ -70,5 +79,6 @@ export function drawFortune(): FortuneResult {
     fortune: pickRandom(FORTUNES),
     item: pickRandom(LUCKY_ITEMS),
     color: pickRandom(LUCKY_COLORS),
+    lotto: drawLotto(),
   };
 }
